@@ -2,18 +2,25 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const badges = [
-    "https://img.shields.io/badge/c++-%2300599C.svg?style=flat&logo=c%2B%2B&logoColor=white",
-    "https://img.shields.io/badge/php-%23777BB4.svg?style=flat&logo=php&logoColor=white",
+    "https://img.shields.io/badge/laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white",
+    "https://img.shields.io/badge/Flutter-%2302569B.svg?style=flat&logo=Flutter&logoColor=white",
+    "https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB",
+    "https://img.shields.io/badge/tailwind-css-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white",
+    "https://img.shields.io/badge/three.js-%23000000.svg?style=flat&logo=three.js&logoColor=white",
+    "https://img.shields.io/badge/node.js-6DA55F?style=flat&logo=node.js&logoColor=white",
+    "https://img.shields.io/badge/express.js-%23404d59.svg?style=flat&logo=express&logoColor=white",
     "https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E",
+    "https://img.shields.io/badge/php-%23777BB4.svg?style=flat&logo=php&logoColor=white",
     "https://img.shields.io/badge/go-%2300ADD8.svg?style=flat&logo=go&logoColor=white",
     "https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54",
-    "https://img.shields.io/badge/node.js-6DA55F?style=flat&logo=node.js&logoColor=white",
-    "https://img.shields.io/badge/laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white",
-    "https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB",
+    "https://img.shields.io/badge/c++-%2300599C.svg?style=flat&logo=c%2B%2B&logoColor=white",
+    "https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white",
+    "https://img.shields.io/badge/dart-%230175C2.svg?style=flat&logo=dart&logoColor=white",
     "https://img.shields.io/badge/mysql-%2300000f.svg?style=flat&logo=mysql&logoColor=white",
     "https://img.shields.io/badge/firebase-%23039BE5.svg?style=flat&logo=firebase",
-    "https://img.shields.io/badge/express.js-%23404d59.svg?style=flat&logo=express&logoColor=white",
-    "https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white"
+    "https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white",
+    "https://img.shields.io/badge/-Arduino-00979D?style=flat&logo=Arduino&logoColor=white",
+    "https://img.shields.io/badge/ESP32-E7352C?style=flat&logo=espressif&logoColor=white"
 ];
 
 function BentoSection() {

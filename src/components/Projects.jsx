@@ -7,7 +7,7 @@ const projects = [
         title: 'Bidanku - Midwifery Management System',
         period: 'Aug 2025 – Jan 2026',
         role: 'Back-End Web Development',
-        tech: ['Node.js', 'SQL', 'Database Architecture'],
+        tech: ['Node.js', 'Express.js', 'MySQL', 'Docker', 'Database Architecture'],
         repo: 'https://github.com/Xaverria30/bidanku',
         summary: 'Midwifery clinic management system to digitize paper-based manual medical records into a centralized secure digital database.',
         images: [
@@ -48,7 +48,7 @@ const projects = [
         title: 'DonasiKu - Second-Hand Goods Platform',
         period: '2025',
         role: 'Fullstack Developer',
-        tech: ['React.js', 'Vite', 'Laravel', 'PHP'],
+        tech: ['React.js', 'Laravel', 'Tailwind CSS', 'Three.js', 'MySQL', 'Docker'],
         repo: 'https://github.com/Mazkad12/DONASIKU-WEBPRO',
         summary: 'Web-based second-hand goods donation platform facilitating transparent distribution or donation of goods.',
         images: [

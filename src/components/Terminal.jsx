@@ -22,7 +22,7 @@ export default function Terminal() {
                 response = 'Muhammad Bayu Satrio - Fullstack Web Developer | AI Engineer | IoT Specialist';
                 break;
             case 'skills':
-                response = 'JavaScript, PHP, Go, Python, C++, Java, Node.js, Express.js, React, Laravel, MySQL, Firebase, Supabase, Hardware IoT (ESP32)';
+                response = 'Laravel, Flutter, React, Node.js, Express.js, Tailwind CSS, Three.js, JavaScript, PHP, Go, Python, Dart, C++, Java, MySQL, Firebase, Supabase, Docker, Hardware IoT (ESP32, Arduino)';
                 break;
             case 'education':
                 response = 'Currently pursuing a Bachelor of Information Technology degree at Telkom University (2023 - 2027)';
