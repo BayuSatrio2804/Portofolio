@@ -1,12 +1,38 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-export default function Terminal() {
+const terminalCopy = {
+    en: {
+        intro: [
+            'MBS-OS v1.0.0 (Node.js/React Fiber Kernel)',
+            'Encrypted access to Muhammad Bayu Satrio AI engineering workspace.',
+            'Type "help" to see available commands.',
+        ],
+        help: 'Available commands: whoami, skills, education, sudo, clear',
+        whoami: 'Muhammad Bayu Satrio - AI Engineer focused on Indonesian NLP, analytics workflows, and production-aware applied systems.',
+        skills: 'Python, NLP, analytics, ONNX Runtime, React, Laravel, SQL, Firebase, ESP32',
+        education: 'Currently pursuing a Bachelor of Information Technology degree at Telkom University (2023 - 2027)',
+        sudo: 'Access denied. This incident has been logged by the system administrator.',
+        notFound: (command) => `Bash command not found: ${command}. Type "help".`,
+    },
+    id: {
+        intro: [
+            'MBS-OS v1.0.0 (Node.js/React Fiber Kernel)',
+            'Akses terenkripsi ke workspace AI engineering Muhammad Bayu Satrio.',
+            'Ketik "help" untuk melihat command yang tersedia.',
+        ],
+        help: 'Command tersedia: whoami, skills, education, sudo, clear',
+        whoami: 'Muhammad Bayu Satrio - AI Engineer yang berfokus pada NLP bahasa Indonesia, workflow analytics, dan applied systems yang siap produksi.',
+        skills: 'Python, NLP, analytics, ONNX Runtime, React, Laravel, SQL, Firebase, ESP32',
+        education: 'Sedang menempuh Bachelor of Information Technology di Telkom University (2023 - 2027)',
+        sudo: 'Akses ditolak. Insiden ini sudah dicatat oleh administrator sistem.',
+        notFound: (command) => `Command bash tidak ditemukan: ${command}. Ketik "help".`,
+    },
+};
+
+export default function Terminal({ language = 'en' }) {
+    const copy = terminalCopy[language] ?? terminalCopy.en;
     const [input, setInput] = useState('');
-    const [history, setHistory] = useState([
-        { type: 'system', text: 'MBS-OS v1.0.0 (Node.js/React Fiber Kernel)' },
-        { type: 'system', text: 'Encrypted access to Muhammad Bayu Satrio mainframe.' },
-        { type: 'system', text: 'Type "help" to see the list of secret commands.' }
-    ]);
+    const [history, setHistory] = useState(() => copy.intro.map((text) => ({ type: 'system', text })));
     const inputRef = useRef(null);
     const bottomRef = useRef(null);
 
@@ -16,19 +42,19 @@ export default function Terminal() {
 
         switch (cleanCmd) {
             case 'help':
-                response = 'Available commands: whoami, skills, education, sudo, clear';
+                response = copy.help;
                 break;
             case 'whoami':
-                response = 'Muhammad Bayu Satrio - Fullstack Web Developer | AI Engineer | IoT Specialist';
+                response = copy.whoami;
                 break;
             case 'skills':
-                response = 'JavaScript, PHP, Go, Python, C++, Java, Node.js, Express.js, React, Laravel, MySQL, Firebase, Supabase, Hardware IoT (ESP32)';
+                response = copy.skills;
                 break;
             case 'education':
-                response = 'Currently pursuing a Bachelor of Information Technology degree at Telkom University (2023 - 2027)';
+                response = copy.education;
                 break;
             case 'sudo':
-                response = 'Access denied. This intrusion incident has been logged and reported to the system Administrator.';
+                response = copy.sudo;
                 break;
             case 'clear':
                 setHistory([]);
@@ -36,14 +62,14 @@ export default function Terminal() {
             case '':
                 break;
             default:
-                response = `Bash command not found: ${cleanCmd}. Type "help".`;
+                response = copy.notFound(cleanCmd);
         }
 
         if (cleanCmd !== 'clear') {
             setHistory(prev => [
                 ...prev,
                 { type: 'user', text: `guest@bayusatrio:~$ ${cleanCmd}` },
-                ...(response ? [{ type: 'response', text: response }] : [])
+                ...(response ? [{ type: 'response', text: response }] : []),
             ]);
         }
     };
@@ -65,11 +91,10 @@ export default function Terminal() {
                 style={{
                     width: '100%', maxWidth: '850px', background: '#050505', borderRadius: '12px',
                     border: '1px solid rgba(255,255,255,0.15)', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
-                    fontFamily: 'monospace', fontSize: '0.95rem'
+                    fontFamily: 'monospace', fontSize: '0.95rem',
                 }}
                 onClick={() => inputRef.current?.focus()}
             >
-                {/* Header Ala macOS */}
                 <div style={{ background: '#1e293b', padding: '0.7rem 1rem', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                     <div style={{ width: '13px', height: '13px', borderRadius: '50%', background: '#ef4444' }}></div>
                     <div style={{ width: '13px', height: '13px', borderRadius: '50%', background: '#eab308' }}></div>
@@ -77,18 +102,16 @@ export default function Terminal() {
                     <span style={{ color: '#94a3b8', margin: '0 auto', fontSize: '0.85rem', fontWeight: 600 }}>guest@bayusatrio:~ (bash)</span>
                 </div>
 
-                {/* Tubuh Terminal (Teks) */}
                 <div style={{ padding: '1.5rem', height: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.6rem', scrollBehavior: 'smooth' }}>
                     {history.map((line, idx) => (
                         <div key={idx} style={{
                             color: line.type === 'user' ? '#38bdf8' : line.type === 'response' ? '#a3e635' : '#94a3b8',
-                            lineHeight: 1.5
+                            lineHeight: 1.5,
                         }}>
                             {line.text}
                         </div>
                     ))}
 
-                    {/* Baris Input Interaktif */}
                     <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', marginTop: '0.5rem' }}>
                         <span style={{ color: '#38bdf8', fontWeight: 600 }}>guest@bayusatrio:~$</span>
                         <input
@@ -99,7 +122,7 @@ export default function Terminal() {
                             onKeyDown={handleKeyDown}
                             style={{
                                 background: 'transparent', border: 'none', color: '#f8fafc', flex: 1,
-                                outline: 'none', fontFamily: 'monospace', fontSize: '0.95rem', fontWeight: 500
+                                outline: 'none', fontFamily: 'monospace', fontSize: '0.95rem', fontWeight: 500,
                             }}
                             spellCheck="false"
                             autoComplete="off"
