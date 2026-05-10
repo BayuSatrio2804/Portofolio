@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from 'react'
 import Background3D from './components/Background3D'
 import Navigation from './components/Navigation'
 import CustomCursor from './components/CustomCursor'
@@ -8,23 +9,36 @@ import BentoSection from './components/BentoSection'
 import Experience from './components/Experience'
 import Education from './components/Education'
 import Projects from './components/Projects'
+import Certificates from './components/Certificates'
 import Contact from './components/Contact'
+import { certificates, education, experiences, getCopy, projects } from './data/portfolioContent'
 
 function App() {
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('portfolio-language') || 'en'
+  })
+  const copy = useMemo(() => getCopy(language), [language])
+
+  useEffect(() => {
+    document.documentElement.lang = language
+    localStorage.setItem('portfolio-language', language)
+  }, [language])
+
   return (
     <>
       <Preloader />
       <CustomCursor />
       <Background3D />
-      <Navigation />
+      <Navigation copy={copy.nav} language={language} onLanguageChange={setLanguage} />
       <main>
-        <Hero />
-        <Terminal />
-        <BentoSection />
-        <Experience />
-        <Education />
-        <Projects />
-        <Contact />
+        <Hero copy={copy.hero} />
+        <BentoSection copy={copy.about} />
+        <Projects copy={copy.projects} language={language} projects={projects} />
+        <Certificates copy={copy.certificates} certificates={certificates} />
+        <Experience copy={copy.experience} language={language} experiences={experiences} />
+        <Education copy={copy.education} language={language} education={education} />
+        <Terminal language={language} />
+        <Contact copy={copy.contact} />
       </main>
       <footer className="glass-panel" style={{ textAlign: 'center', padding: '2rem', borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '2rem', background: 'rgba(3, 0, 20, 0.4)' }}>
         <p style={{ color: '#64748b' }}>&copy; 2026 Portfolio. Crafted with 💡 and React.</p>
