@@ -1,6 +1,8 @@
 import { Award, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+const MotionArticle = motion.article
+
 function Certificates({ copy, certificates }) {
   return (
     <section id="certificates" className="section certificates-section">
@@ -11,15 +13,17 @@ function Certificates({ copy, certificates }) {
       </div>
       <div className="certificate-grid">
         {certificates.map((certificate) => (
-          <motion.article
-            key={`${certificate.title}-${certificate.year}`}
+          <MotionArticle
+            key={`${certificate.title}-${certificate.issuer}-${certificate.year}`}
             className="certificate-card"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.45 }}
           >
-            <img src={certificate.image} alt={`${certificate.title} certificate`} />
+            {certificate.image && (
+              <img src={certificate.image} alt={`${certificate.title} certificate`} />
+            )}
             <div>
               <div className="card-kicker">
                 <Award size={16} />
@@ -28,12 +32,14 @@ function Certificates({ copy, certificates }) {
               <h3>{certificate.title}</h3>
               <p>{certificate.issuer}</p>
               <span className="certificate-year">{certificate.year}</span>
-              <a href={certificate.image} target="_blank" rel="noreferrer" className="text-link">
-                {copy.view}
-                <ExternalLink size={15} />
-              </a>
+              {certificate.image && (
+                <a href={certificate.image} target="_blank" rel="noreferrer" className="text-link">
+                  {copy.view}
+                  <ExternalLink size={15} />
+                </a>
+              )}
             </div>
-          </motion.article>
+          </MotionArticle>
         ))}
       </div>
     </section>
