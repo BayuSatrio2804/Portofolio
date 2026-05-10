@@ -29,10 +29,17 @@ const terminalCopy = {
     },
 };
 
-export default function Terminal({ language = 'en' }) {
-    const copy = terminalCopy[language] ?? terminalCopy.en;
+function getTerminalCopy(language) {
+    return terminalCopy[language] ?? terminalCopy.en;
+}
+
+function getIntroHistory(copy) {
+    return copy.intro.map((text) => ({ type: 'system', text }));
+}
+
+function TerminalSession({ copy }) {
     const [input, setInput] = useState('');
-    const [history, setHistory] = useState(() => copy.intro.map((text) => ({ type: 'system', text })));
+    const [history, setHistory] = useState(() => getIntroHistory(copy));
     const inputRef = useRef(null);
     const bottomRef = useRef(null);
 
@@ -133,4 +140,10 @@ export default function Terminal({ language = 'en' }) {
             </div>
         </section>
     );
+}
+
+export default function Terminal({ language = 'en' }) {
+    const copy = getTerminalCopy(language);
+
+    return <TerminalSession key={language} copy={copy} />;
 }
