@@ -12,9 +12,12 @@ assert.deepEqual(languages, ['en', 'id']);
 for (const language of languages) {
   const copy = getCopy(language);
   assert.equal(typeof copy.nav.home, 'string');
+  assert.equal(typeof copy.preloader.loading, 'string');
+  assert.equal(typeof copy.footer.text, 'string');
   assert.equal(typeof copy.hero.headline, 'string');
   assert.equal(copy.projects.title.length > 0, true);
   assert.equal(copy.contact.form.name.length > 0, true);
+  assert.equal(copy.contact.form.error.length > 0, true);
 }
 
 assert.equal(getCopy('unknown'), content.en);

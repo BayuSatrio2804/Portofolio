@@ -3,9 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const MotionDiv = motion.div;
 
-export default function Preloader() {
+const defaultCopy = {
+    loading: 'Loading Portfolio'
+};
+
+export default function Preloader({ copy = defaultCopy }) {
     const [isLoading, setIsLoading] = useState(true);
     const [progress, setProgress] = useState(0);
+    const sectionCopy = { ...defaultCopy, ...copy };
 
     useEffect(() => {
         // Animasi persentase pemuatan (fake loading simulation)
@@ -69,7 +74,7 @@ export default function Preloader() {
 
                         {/* Counter Angka */}
                         <p style={{ marginTop: '1rem', fontSize: '1.1rem', fontWeight: 600, color: '#64748b' }}>
-                            Loading Portfolio... {progress}%
+                            {sectionCopy.loading}... {progress}%
                         </p>
                     </MotionDiv>
                 </MotionDiv>

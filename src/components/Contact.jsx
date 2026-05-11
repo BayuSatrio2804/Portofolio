@@ -18,7 +18,8 @@ const defaultCopy = {
         sending: 'Sending Message...',
         sentTitle: 'Message Sent',
         sentBody: 'Thank you for reaching out. I will respond to your email as soon as possible.',
-        another: 'Send Another Message'
+        another: 'Send Another Message',
+        error: 'Message delivery failed. Please check your connection or contact me through GitHub or LinkedIn.'
     }
 };
 
@@ -42,14 +43,17 @@ function Contact({ copy }) {
         const formData = new FormData(e.target);
         try {
             // Menggunakan FormSubmit API versi AJAX agar tanpa refresh halaman!
-            await fetch(`https://formsubmit.co/ajax/${EMAIL_TARGET}`, {
+            const response = await fetch(`https://formsubmit.co/ajax/${EMAIL_TARGET}`, {
                 method: "POST",
                 body: formData
             });
+            if (!response.ok) {
+                throw new Error(`FormSubmit returned ${response.status}`);
+            }
             setIsSent(true);
         } catch (error) {
             console.error(error);
-            alert("Oops, failed to connect to the delivery server. Please check your VPN/connection.");
+            alert(formCopy.error);
         } finally {
             setIsSubmitting(false);
         }

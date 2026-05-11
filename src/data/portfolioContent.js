@@ -3,6 +3,8 @@ export const languages = ['en', 'id'];
 export const content = {
   en: {
     nav: { home: 'Home', about: 'About', projects: 'Projects', certificates: 'Certificates', experience: 'Experience', education: 'Education', contact: 'Contact' },
+    preloader: { loading: 'Loading Portfolio' },
+    footer: { text: '© 2026 Muhammad Bayu Satrio. Built with applied AI, data, and React.' },
     hero: {
       eyebrow: 'GEMASTIK XVIII Silver Medalist', name: 'Muhammad Bayu Satrio', headline: 'AI Engineer focused on NLP, Analytics, and Applied Systems.',
       body: 'I build Indonesian NLP models, data-driven workflows, and production-aware systems that connect machine learning with useful software products.',
@@ -28,11 +30,13 @@ export const content = {
     education: { eyebrow: 'Education', title: 'Academic foundation', certificatesTitle: 'Recognition Highlight' },
     contact: {
       eyebrow: 'Contact', title: "Let's build useful AI and data systems.", body: 'Open to collaboration, internship opportunities, AI/data roles, and applied software projects.', github: 'GitHub', linkedin: 'LinkedIn',
-      form: { name: 'Your Name', email: 'Your Email', subject: 'Subject / Purpose', message: 'Write your message here...', send: 'Send Message', sending: 'Sending Message...', sentTitle: 'Message Sent', sentBody: 'Thank you for reaching out. I will respond to your email as soon as possible.', another: 'Send Another Message' },
+      form: { name: 'Your Name', email: 'Your Email', subject: 'Subject / Purpose', message: 'Write your message here...', send: 'Send Message', sending: 'Sending Message...', sentTitle: 'Message Sent', sentBody: 'Thank you for reaching out. I will respond to your email as soon as possible.', another: 'Send Another Message', error: 'Message delivery failed. Please check your connection or contact me through GitHub or LinkedIn.' },
     },
   },
   id: {
     nav: { home: 'Beranda', about: 'Tentang', projects: 'Proyek', certificates: 'Sertifikat', experience: 'Pengalaman', education: 'Pendidikan', contact: 'Kontak' },
+    preloader: { loading: 'Memuat Portfolio' },
+    footer: { text: '© 2026 Muhammad Bayu Satrio. Dibangun dengan applied AI, data, dan React.' },
     hero: {
       eyebrow: 'Peraih Medali Perak GEMASTIK XVIII', name: 'Muhammad Bayu Satrio', headline: 'AI Engineer yang berfokus pada NLP, Analytics, dan Applied Systems.',
       body: 'Saya membangun model NLP bahasa Indonesia, workflow berbasis data, dan sistem siap produksi yang menghubungkan machine learning dengan produk software yang berguna.',
@@ -58,7 +62,7 @@ export const content = {
     education: { eyebrow: 'Pendidikan', title: 'Fondasi akademik', certificatesTitle: 'Highlight Pencapaian' },
     contact: {
       eyebrow: 'Kontak', title: 'Mari bangun sistem AI dan data yang berguna.', body: 'Terbuka untuk kolaborasi, internship, peran AI/data, dan proyek software terapan.', github: 'GitHub', linkedin: 'LinkedIn',
-      form: { name: 'Nama Anda', email: 'Email Anda', subject: 'Subjek / Tujuan', message: 'Tulis pesan Anda...', send: 'Kirim Pesan', sending: 'Mengirim Pesan...', sentTitle: 'Pesan Terkirim', sentBody: 'Terima kasih sudah menghubungi saya. Saya akan membalas email Anda secepatnya.', another: 'Kirim Pesan Lain' },
+      form: { name: 'Nama Anda', email: 'Email Anda', subject: 'Subjek / Tujuan', message: 'Tulis pesan Anda...', send: 'Kirim Pesan', sending: 'Mengirim Pesan...', sentTitle: 'Pesan Terkirim', sentBody: 'Terima kasih sudah menghubungi saya. Saya akan membalas email Anda secepatnya.', another: 'Kirim Pesan Lain', error: 'Pengiriman pesan gagal. Periksa koneksi Anda atau hubungi saya melalui GitHub atau LinkedIn.' },
     },
   },
 };

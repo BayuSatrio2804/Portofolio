@@ -1,19 +1,22 @@
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Stars } from '@react-three/drei'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function RotatingKnot() {
     const meshRef = useRef()
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
-    if (typeof window !== 'undefined') {
-        window.addEventListener('mousemove', (e) => {
+    useEffect(() => {
+        const handleMouseMove = (e) => {
             setMousePos({
                 x: (e.clientX / window.innerWidth) * 2 - 1,
                 y: -(e.clientY / window.innerHeight) * 2 + 1
             })
-        })
-    }
+        }
+
+        window.addEventListener('mousemove', handleMouseMove)
+        return () => window.removeEventListener('mousemove', handleMouseMove)
+    }, [])
 
     useFrame((state, delta) => {
         if (meshRef.current) {

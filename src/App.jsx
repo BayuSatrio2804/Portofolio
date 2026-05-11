@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <Preloader />
+      <Preloader copy={copy.preloader} />
       <CustomCursor />
       <Background3D />
       <Navigation copy={copy.nav} language={language} onLanguageChange={setLanguage} />
@@ -41,7 +41,7 @@ function App() {
         <Contact copy={copy.contact} />
       </main>
       <footer className="glass-panel site-footer">
-        <p>&copy; 2026 Portfolio. Crafted with applied AI, data, and React.</p>
+        <p>{copy.footer.text}</p>
       </footer>
     </>
   )
