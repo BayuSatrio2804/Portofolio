@@ -45,52 +45,54 @@ function Projects({ copy, language, projects }) {
                                     ))}
                                 </div>
 
-                                {isExpanded && (
-                                    <div id={detailsId} className="project-expanded" style={{ marginTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
-                                        {hasImages ? (
-                                            <div className="project-gallery" style={{ marginBottom: '2rem' }}>
-                                                <h4 style={{ color: '#38bdf8', marginBottom: '1rem', fontSize: '0.95rem' }}>{copy.visualDocumentation}:</h4>
-                                                <div className="custom-scrollbar project-gallery-track" style={{ display: 'flex', gap: '15px', overflowX: 'auto', paddingBottom: '15px' }}>
-                                                    {project.images.map((image, imageIndex) => (
-                                                        <img
-                                                            key={image}
-                                                            src={image}
-                                                            alt={`${project.title} ${imageIndex + 1}`}
-                                                            style={{
-                                                                height: '220px',
-                                                                width: 'auto',
-                                                                borderRadius: '12px',
-                                                                border: '1px solid rgba(255,255,255,0.1)',
-                                                                objectFit: 'cover',
-                                                                boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-                                                                flexShrink: 0
-                                                            }}
-                                                        />
-                                                    ))}
+                                <div id={detailsId} className="project-expanded" hidden={!isExpanded} style={{ marginTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
+                                    {isExpanded && (
+                                        <>
+                                            {hasImages ? (
+                                                <div className="project-gallery" style={{ marginBottom: '2rem' }}>
+                                                    <h4 style={{ color: '#38bdf8', marginBottom: '1rem', fontSize: '0.95rem' }}>{copy.visualDocumentation}:</h4>
+                                                    <div className="custom-scrollbar project-gallery-track" style={{ display: 'flex', gap: '15px', overflowX: 'auto', paddingBottom: '15px' }}>
+                                                        {project.images.map((image, imageIndex) => (
+                                                            <img
+                                                                key={image}
+                                                                src={image}
+                                                                alt={`${project.title} ${imageIndex + 1}`}
+                                                                style={{
+                                                                    height: '220px',
+                                                                    width: 'auto',
+                                                                    borderRadius: '12px',
+                                                                    border: '1px solid rgba(255,255,255,0.1)',
+                                                                    objectFit: 'cover',
+                                                                    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                                                                    flexShrink: 0
+                                                                }}
+                                                            />
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        ) : (
-                                            <div className="model-visual" aria-label={`${project.title} model workflow visual`}>
-                                                <span>dataset.csv</span>
-                                                <span>IndoBERTweet</span>
-                                                <span>threshold.json</span>
-                                                <span>model.onnx</span>
-                                            </div>
-                                        )}
+                                            ) : (
+                                                <div className="model-visual" role="img" aria-label={`${project.title} model workflow visual`}>
+                                                    <span>dataset.csv</span>
+                                                    <span>IndoBERTweet</span>
+                                                    <span>threshold.json</span>
+                                                    <span>model.onnx</span>
+                                                </div>
+                                            )}
 
-                                        <h4 style={{ color: '#8b5cf6', marginBottom: '1rem' }}>{copy.contributions}:</h4>
-                                        <ul className="project-details-list" style={{ color: '#cbd5e1', fontSize: '0.95rem', paddingLeft: '1.2rem', lineHeight: 1.7, listStyleType: 'disc' }}>
-                                            {details.map((detail) => (
-                                                <li key={detail} style={{ marginBottom: '0.5rem' }}>{detail}</li>
-                                            ))}
-                                        </ul>
-                                        {project.repo && (
-                                            <a href={project.repo} target="_blank" rel="noreferrer" className="project-repo-link" style={{ display: 'inline-block', marginTop: '1.5rem', color: '#0ea5e9', textDecoration: 'none', fontWeight: 600 }}>
-                                                {copy.repo}
-                                            </a>
-                                        )}
-                                    </div>
-                                )}
+                                            <h4 style={{ color: '#8b5cf6', marginBottom: '1rem' }}>{copy.contributions}:</h4>
+                                            <ul className="project-details-list" style={{ color: '#cbd5e1', fontSize: '0.95rem', paddingLeft: '1.2rem', lineHeight: 1.7, listStyleType: 'disc' }}>
+                                                {details.map((detail) => (
+                                                    <li key={detail} style={{ marginBottom: '0.5rem' }}>{detail}</li>
+                                                ))}
+                                            </ul>
+                                            {project.repo && (
+                                                <a href={project.repo} target="_blank" rel="noreferrer" className="project-repo-link" style={{ display: 'inline-block', marginTop: '1.5rem', color: '#0ea5e9', textDecoration: 'none', fontWeight: 600 }}>
+                                                    {copy.repo}
+                                                </a>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
                             </div>
 
                             <button
