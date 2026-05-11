@@ -1,7 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { education as defaultEducation } from '../data/portfolioContent';
 
 const MotionDiv = motion.div;
+
+const defaultCopy = {
+    eyebrow: 'Education',
+    title: 'Academic foundation'
+};
 
 const schoolFallbackIcon = (
     <svg width="55" height="55" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,17 +17,20 @@ const schoolFallbackIcon = (
     </svg>
 );
 
-function Education({ copy, language = 'en', education = [] }) {
+function Education({ copy, language = 'en', education }) {
+    const sectionCopy = { ...defaultCopy, ...copy };
+    const sectionEducation = education ?? defaultEducation;
+
     return (
         <section id="education" style={{ padding: '3rem 5% 4rem' }}>
             <div style={{ maxWidth: '950px', width: '100%', margin: '0 auto' }}>
 
                 {/* Pilar Pendidikan */}
                 <div>
-                    <p className="section-eyebrow" style={{ color: '#38bdf8', fontWeight: 600, marginBottom: '0.75rem' }}>{copy?.eyebrow}</p>
-                    <h2 className="title-gradient section-heading" style={{ fontSize: '2rem', marginBottom: '2rem' }}>{copy?.title}</h2>
+                    <p className="section-eyebrow" style={{ color: '#38bdf8', fontWeight: 600, marginBottom: '0.75rem' }}>{sectionCopy.eyebrow}</p>
+                    <h2 className="title-gradient section-heading" style={{ fontSize: '2rem', marginBottom: '2rem' }}>{sectionCopy.title}</h2>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                        {education.map((edu, idx) => (
+                        {sectionEducation.map((edu, idx) => (
                             <MotionDiv
                                 key={idx}
                                 className="bento-card education-card"
@@ -39,7 +48,10 @@ function Education({ copy, language = 'en', education = [] }) {
                                             src={edu.logo}
                                             alt={edu.institution}
                                             style={{ width: '55px', height: '55px', objectFit: 'contain', background: '#fff', padding: '5px', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.3)' }}
-                                            onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${edu.institution}&background=fff&color=0ea5e9&size=100`; }}
+                                            onError={(event) => {
+                                                event.currentTarget.onerror = null;
+                                                event.currentTarget.src = `https://ui-avatars.com/api/?name=${edu.institution}&background=fff&color=0ea5e9&size=100`;
+                                            }}
                                         />
                                     ) : (
                                         <div style={{ width: '55px', height: '55px', flexShrink: 0, borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.3)' }}>

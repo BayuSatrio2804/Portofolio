@@ -1,18 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { experiences as defaultExperiences } from '../data/portfolioContent';
 
 const MotionDiv = motion.div;
 
-function Experience({ copy, language = 'en', experiences = [] }) {
+const defaultCopy = {
+    eyebrow: 'Experience',
+    title: 'Applied technical journey'
+};
+
+function Experience({ copy, language = 'en', experiences }) {
+    const sectionCopy = { ...defaultCopy, ...copy };
+    const sectionExperiences = experiences ?? defaultExperiences;
+
     return (
         <section id="experience" style={{ padding: '8rem 5% 4rem' }}>
             <div style={{ maxWidth: '950px', width: '100%', margin: '0 auto' }}>
-                <p className="section-eyebrow" style={{ textAlign: 'center', color: '#38bdf8', fontWeight: 600, marginBottom: '0.75rem' }}>{copy?.eyebrow}</p>
-                <h2 className="title-gradient section-heading" style={{ fontSize: '2.5rem', marginBottom: '4rem', textAlign: 'center' }}>{copy?.title}</h2>
+                <p className="section-eyebrow" style={{ textAlign: 'center', color: '#38bdf8', fontWeight: 600, marginBottom: '0.75rem' }}>{sectionCopy.eyebrow}</p>
+                <h2 className="title-gradient section-heading" style={{ fontSize: '2.5rem', marginBottom: '4rem', textAlign: 'center' }}>{sectionCopy.title}</h2>
 
                 <div className="timeline-list" style={{ position: 'relative', borderLeft: '2px solid rgba(56, 189, 248, 0.3)', paddingLeft: '2.5rem', marginLeft: '1rem', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
 
-                    {experiences.map((exp, idx) => (
+                    {sectionExperiences.map((exp, idx) => (
                         <MotionDiv
                             key={idx}
                             style={{ position: 'relative' }}
