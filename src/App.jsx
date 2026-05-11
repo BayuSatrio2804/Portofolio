@@ -40,8 +40,8 @@ function App() {
         <Terminal language={language} />
         <Contact copy={copy.contact} />
       </main>
-      <footer className="glass-panel" style={{ textAlign: 'center', padding: '2rem', borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: '2rem', background: 'rgba(3, 0, 20, 0.4)' }}>
-        <p style={{ color: '#64748b' }}>&copy; 2026 Portfolio. Crafted with 💡 and React.</p>
+      <footer className="glass-panel site-footer">
+        <p>&copy; 2026 Portfolio. Crafted with applied AI, data, and React.</p>
       </footer>
     </>
   )

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
+const MotionDiv = motion.div;
+
 export default function CustomCursor() {
     const [isHovered, setIsHovered] = useState(false);
     const cursorX = useMotionValue(-100);
@@ -51,7 +53,7 @@ export default function CustomCursor() {
             </style>
 
             {/* Cincin luar (melayang lebih lambat) */}
-            <motion.div
+            <MotionDiv
                 style={{
                     position: 'fixed',
                     left: 0,
@@ -74,7 +76,7 @@ export default function CustomCursor() {
             />
 
             {/* Titik dalam (mengikuti lebih cepat) */}
-            <motion.div
+            <MotionDiv
                 style={{
                     position: 'fixed',
                     left: 6,

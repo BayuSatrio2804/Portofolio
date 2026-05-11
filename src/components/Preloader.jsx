@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const MotionDiv = motion.div;
+
 export default function Preloader() {
     const [isLoading, setIsLoading] = useState(true);
     const [progress, setProgress] = useState(0);
@@ -25,7 +27,7 @@ export default function Preloader() {
     return (
         <AnimatePresence>
             {isLoading && (
-                <motion.div
+                <MotionDiv
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, y: -50 }}
                     transition={{ duration: 0.7, ease: "easeInOut" }}
@@ -45,7 +47,7 @@ export default function Preloader() {
                     }}
                 >
                     {/* Inisial M B S (Muhammad Bayu Satrio) */}
-                    <motion.div
+                    <MotionDiv
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -57,7 +59,7 @@ export default function Preloader() {
 
                         {/* Progress Bar Line */}
                         <div style={{ width: '220px', height: '4px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden', position: 'relative' }}>
-                            <motion.div
+                            <MotionDiv
                                 style={{ height: '100%', background: 'linear-gradient(to right, #38bdf8, #818cf8)', width: `${progress}%`, borderRadius: '10px' }}
                                 initial={{ width: '0%' }}
                                 animate={{ width: `${progress}%` }}
@@ -69,8 +71,8 @@ export default function Preloader() {
                         <p style={{ marginTop: '1rem', fontSize: '1.1rem', fontWeight: 600, color: '#64748b' }}>
                             Loading Portfolio... {progress}%
                         </p>
-                    </motion.div>
-                </motion.div>
+                    </MotionDiv>
+                </MotionDiv>
             )}
         </AnimatePresence>
     );
