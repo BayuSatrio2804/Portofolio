@@ -1,91 +1,201 @@
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const path = require('path');
 
-const doc = new PDFDocument({ margin: 50 });
-doc.pipe(fs.createWriteStream('public/Resume_Muhammad_Bayu_Satrio.pdf'));
+// Colors matching the website
+const COLORS = {
+    bg: '#ffffff',
+    bgDark: '#08080b',
+    text: '#1e293b',
+    textLight: '#f1f5f9',
+    accent: '#38bdf8',
+    accentSecondary: '#818cf8',
+    gray: '#64748b'
+};
 
-// Add some content
-doc.font('Helvetica-Bold').fontSize(26).text('Muhammad Bayu Satrio', { align: 'left' });
-doc.font('Helvetica').fontSize(14).text('Fullstack Web Developer | AI Engineer | IoT Specialist', { align: 'left', color: '#555555' });
-doc.moveDown(0.5);
+const doc = new PDFDocument({ 
+    margin: 0, 
+    size: 'A4',
+    bufferPages: true 
+});
 
-// Contact Info
-doc.font('Helvetica').fontSize(11).text('Email: bayusatrio2804@gmail.com | LinkedIn: linkedin.com/in/muhammad-bayu-satrio | GitHub: github.com/BayuSatrio2804');
-doc.moveDown(1);
+const outputStream = fs.createWriteStream('public/Resume_Muhammad_Bayu_Satrio.pdf');
+doc.pipe(outputStream);
 
-// Separator
-doc.moveTo(50, doc.y).lineTo(550, doc.y).strokeColor('#cccccc').stroke();
-doc.moveDown(1);
+const sidebarWidth = 180;
+const pageWidth = 595.28; // A4 width in points
+const pageHeight = 841.89; // A4 height in points
+const margin = 40;
 
-// Section: Professional Summary
-doc.font('Helvetica-Bold').fontSize(14).fillColor('#333333').text('PROFESSIONAL SUMMARY');
-doc.moveDown(0.5);
-doc.font('Helvetica').fontSize(11).fillColor('#000000')
-   .text('I believe that true innovation is born from the synergy of various technological disciplines. As a practitioner, I focus on integrating smart digital ecosystems—leveraging the reliability of Fullstack architecture, the acuity of Artificial Intelligence, and the automation of Internet of Things (IoT). I am strongly committed to designing end-to-end solutions, combining the robustness of highly capable backend logic and cutting-edge data processing to produce intuitive visual interfaces that have a real impact on user experience.', { align: 'justify' });
-doc.moveDown(1.5);
+// --- Sidebar ---
+doc.rect(0, 0, sidebarWidth, pageHeight).fill(COLORS.bgDark);
 
-// Section: Technical Skills
-doc.font('Helvetica-Bold').fontSize(14).text('TECHNICAL SKILLS');
-doc.moveDown(0.5);
-doc.font('Helvetica').fontSize(11)
-   .text('• Programming Languages: JavaScript, PHP, Go, Python, C++, Java')
-   .text('• Frameworks & Libraries: React.js, Vite, Node.js, Express.js, Laravel')
-   .text('• Databases & Cloud: MySQL, Database Architecture, Firebase, Supabase')
-   .text('• Hardware & Emerging Tech: Internet of Things (IoT), ESP32, Artificial Intelligence');
-doc.moveDown(1.5);
+// Profile Photo (Circular)
+const photoPath = path.join(__dirname, 'public/foto-saya.jpg');
+if (fs.existsSync(photoPath)) {
+    const photoSize = 100;
+    const photoX = (sidebarWidth - photoSize) / 2;
+    const photoY = 50;
+    
+    doc.save();
+    doc.circle(photoX + photoSize/2, photoY + photoSize/2, photoSize/2).clip();
+    doc.image(photoPath, photoX, photoY, { width: photoSize, height: photoSize });
+    doc.restore();
+    
+    // Border for photo
+    doc.circle(photoX + photoSize/2, photoY + photoSize/2, photoSize/2 + 2)
+       .lineWidth(2)
+       .strokeColor(COLORS.accent)
+       .stroke();
+}
 
-// Section: Experience
-doc.font('Helvetica-Bold').fontSize(14).text('PROFESSIONAL EXPERIENCE');
-doc.moveDown(0.5);
+let yPos = 180;
 
-// Job 1
-doc.font('Helvetica-Bold').fontSize(12).text('Back-End Web Developer', { continued: true }).font('Helvetica').text(' | Bidanku (Digital Transformation Group)', { align: 'left' });
-doc.font('Helvetica-Oblique').fontSize(10).fillColor('#666666').text('Aug 2025 – Jan 2026', { align: 'right' });
-doc.moveUp(); // Reset position from right alignment
-doc.moveDown(1);
-doc.font('Helvetica').fontSize(11).fillColor('#000000')
-   .text('• Led the design of rigorous relational database schemas (ANC, Family Planning, Immunizations).')
-   .text('• Implemented automated medical business logic for future midwifery clinic medical record systems, including determining patient LMP and EDD.')
-   .text('• Optimized SQL queries for data aggregation in Monthly Reports and created secure Audit Log systems.');
-doc.moveDown(1);
+// Sidebar Content
+function sidebarTitle(text) {
+    doc.fillColor(COLORS.accent)
+       .font('Helvetica-Bold')
+       .fontSize(12)
+       .text(text.toUpperCase(), 20, yPos);
+    yPos += 18;
+}
 
-// Job 2
-doc.font('Helvetica-Bold').fontSize(12).text('CFO & ICT Business Development', { continued: true }).font('Helvetica').text(' | ACETRA (Smart IoT System)', { align: 'left' });
-doc.font('Helvetica-Oblique').fontSize(10).fillColor('#666666').text('Jun 2025 – Oct 2025', { align: 'right' });
-doc.moveUp();
-doc.moveDown(1);
-doc.font('Helvetica').fontSize(11).fillColor('#000000')
-   .text('• Engineered a smart IoT monitoring system to optimize coffee husk waste fermentation.')
-   .text('• Managed strategic financial budgets for sensor hardware procurement (pH Sensors, MQ-135, Thermocouples).')
-   .text('• Analyzed commercial feasibility and bridged technical IoT capabilities with business value (GEMASTIK XVIII 2025).');
-doc.moveDown(1);
+function sidebarText(text) {
+    doc.fillColor(COLORS.textLight)
+       .font('Helvetica')
+       .fontSize(9)
+       .text(text, 20, yPos, { width: sidebarWidth - 40 });
+    yPos += doc.heightOfString(text, { width: sidebarWidth - 40 }) + 8;
+}
 
-// Job 3
-doc.font('Helvetica-Bold').fontSize(12).text('Fullstack Web Developer', { continued: true }).font('Helvetica').text(' | DonasiKu Platform', { align: 'left' });
-doc.font('Helvetica-Oblique').fontSize(10).fillColor('#666666').text('2025', { align: 'right' });
-doc.moveUp();
-doc.moveDown(1);
-doc.font('Helvetica').fontSize(11).fillColor('#000000')
-   .text('• Engineered a robust donation platform utilizing a Laravel backend and a modern React frontend.')
-   .text('• Built a Donation Tracking System for live distribution status updates to guarantee operational transparency.')
-   .text('• Developed a responsive Landing Page to increase interaction and donor trust.');
-doc.moveDown(1.5);
+sidebarTitle('Contact');
+sidebarText('bayusatrio2804@gmail.com');
+sidebarText('linkedin.com/in/muhammad-bayu-satrio');
+sidebarText('github.com/BayuSatrio2804');
+sidebarText('Banjarmasin, Indonesia');
 
-// Section: Education
-doc.font('Helvetica-Bold').fontSize(14).text('EDUCATION');
-doc.moveDown(0.5);
-doc.font('Helvetica-Bold').fontSize(11).text('Telkom University', { continued: true }).font('Helvetica').text(' — Bachelor of Information Technology', { continued: true }).font('Helvetica-Oblique').text(' (Sep 2023 – Sep 2027)');
-doc.font('Helvetica').text('• Focus: Software engineering pillars, modern computing systems, and innovative IT development.');
-doc.moveDown(0.5);
-doc.font('Helvetica-Bold').fontSize(11).text('SMAN 3 Banjarmasin', { continued: true }).font('Helvetica').text(' — High School Diploma, Exact Sciences (IPA)', { continued: true }).font('Helvetica-Oblique').text(' (2020 – 2023)');
-doc.font('Helvetica').text('• Built a strong foundation in logical thinking, analytics, and exact sciences.');
-doc.moveDown(1.5);
+yPos += 20;
+sidebarTitle('Skills');
+sidebarText('• Fullstack Development\n• AI & Machine Learning\n• Internet of Things (IoT)\n• Database Architecture\n• React, Node.js, Laravel');
 
-// Section: Awards
-doc.font('Helvetica-Bold').fontSize(14).text('AWARDS & CERTIFICATIONS');
-doc.moveDown(0.5);
-doc.font('Helvetica').fontSize(11)
-   .text('• 2nd Place (Silver Medal) - GEMASTIK XVIII (National Level) in ICT – Ministry of Higher Education, Science, and Technology RI (Oct 2025)');
+yPos += 20;
+sidebarTitle('Languages');
+sidebarText('• Indonesian (Native)\n• English (Professional)');
+
+// --- Main Content ---
+let mainX = sidebarWidth + margin;
+let mainY = margin;
+
+// Name & Title
+doc.fillColor(COLORS.text)
+   .font('Helvetica-Bold')
+   .fontSize(28)
+   .text('Muhammad Bayu Satrio', mainX, mainY);
+
+mainY += 32;
+doc.fillColor(COLORS.accentSecondary)
+   .font('Helvetica')
+   .fontSize(14)
+   .text('Fullstack Web Developer | AI Engineer | IoT Specialist', mainX, mainY);
+
+mainY += 40;
+
+// Section Helper
+function sectionTitle(title) {
+    doc.fillColor(COLORS.text)
+       .font('Helvetica-Bold')
+       .fontSize(16)
+       .text(title.toUpperCase(), mainX, mainY);
+    
+    mainY += 22;
+    doc.moveTo(mainX, mainY - 5)
+       .lineTo(pageWidth - margin, mainY - 5)
+       .lineWidth(1)
+       .strokeColor('#e2e8f0')
+       .stroke();
+    mainY += 10;
+}
+
+sectionTitle('Professional Summary');
+doc.fillColor(COLORS.gray)
+   .font('Helvetica')
+   .fontSize(10)
+   .text('A dedicated technologist focused on the synergy of Fullstack architecture, AI, and IoT. Committed to designing end-to-end solutions that combine robust backend logic with intuitive visual interfaces to create real user impact.', mainX, mainY, { width: pageWidth - mainX - margin, align: 'justify' });
+
+mainY += 60;
+
+sectionTitle('Experience');
+
+function addJob(title, company, period, description) {
+    doc.fillColor(COLORS.text)
+       .font('Helvetica-Bold')
+       .fontSize(11)
+       .text(title, mainX, mainY);
+    
+    const periodWidth = doc.widthOfString(period, { size: 9 });
+    doc.fillColor(COLORS.gray)
+       .font('Helvetica-Oblique')
+       .fontSize(9)
+       .text(period, pageWidth - margin - periodWidth, mainY);
+    
+    mainY += 14;
+    doc.fillColor(COLORS.accent)
+       .font('Helvetica-Bold')
+       .fontSize(10)
+       .text(company, mainX, mainY);
+    
+    mainY += 15;
+    doc.fillColor(COLORS.gray)
+       .font('Helvetica')
+       .fontSize(10)
+       .text(description, mainX, mainY, { width: pageWidth - mainX - margin });
+    
+    mainY += doc.heightOfString(description, { width: pageWidth - mainX - margin }) + 15;
+}
+
+addJob(
+    'Back-End Web Developer',
+    'Bidanku (Digital Transformation Group)',
+    'Aug 2025 – Jan 2026',
+    '• Led the design of relational database schemas for ANC, Family Planning, and Immunizations.\n• Implemented automated medical business logic for future midwifery clinic medical record systems.\n• Optimized SQL queries for data aggregation and created secure Audit Log systems.'
+);
+
+addJob(
+    'CFO & ICT Business Development',
+    'ACETRA (Smart IoT System)',
+    'Jun 2025 – Oct 2025',
+    '• Engineered a smart IoT monitoring system to optimize coffee husk waste fermentation.\n• Managed strategic financial budgets for sensor hardware procurement.\n• Analyzed commercial feasibility for GEMASTIK XVIII 2025.'
+);
+
+addJob(
+    'Fullstack Web Developer',
+    'DonasiKu Platform',
+    '2025',
+    '• Engineered a robust donation platform utilizing Laravel backend and React frontend.\n• Built a Donation Tracking System for live distribution status updates.\n• Developed a responsive Landing Page to increase interaction and donor trust.'
+);
+
+sectionTitle('Education');
+doc.fillColor(COLORS.text)
+   .font('Helvetica-Bold')
+   .fontSize(11)
+   .text('Telkom University', mainX, mainY);
+doc.fillColor(COLORS.gray)
+   .font('Helvetica')
+   .fontSize(10)
+   .text('Bachelor of Information Technology', mainX + 100, mainY);
+const eduPeriod = '2023 - 2027';
+doc.text(eduPeriod, pageWidth - margin - doc.widthOfString(eduPeriod), mainY);
+
+mainY += 25;
+
+sectionTitle('Awards');
+doc.fillColor(COLORS.gray)
+   .font('Helvetica')
+   .fontSize(10)
+   .text('• 2nd Place (Silver Medal) - GEMASTIK XVIII (National Level) in ICT (Oct 2025)', mainX, mainY);
 
 doc.end();
-console.log('PDF Resume successfully generated!');
+
+outputStream.on('finish', () => {
+    console.log('Premium PDF Portfolio successfully generated at public/Resume_Muhammad_Bayu_Satrio.pdf');
+});
