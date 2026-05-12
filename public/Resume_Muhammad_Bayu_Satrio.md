@@ -4,7 +4,7 @@ author: "Muhammad Bayu Satrio"
 ---
 
 # Muhammad Bayu Satrio
-**Fullstack Web Developer | AI Engineer | IoT Specialist**
+**AI Engineer / Data Analyst | NLP · Analytics · Applied Systems**
 
 Email: bayusatrio2804@gmail.com  
 LinkedIn: [linkedin.com/in/muhammad-bayu-satrio-52826a2a5](https://www.linkedin.com/in/muhammad-bayu-satrio-52826a2a5/)  
@@ -13,37 +13,50 @@ GitHub: [github.com/BayuSatrio2804](https://github.com/BayuSatrio2804)
 ---
 
 ## PROFESSIONAL SUMMARY
-I believe that true innovation is born from the synergy of various technological disciplines. As a practitioner, I focus on integrating smart digital ecosystems—leveraging the reliability of Fullstack architecture, the acuity of Artificial Intelligence, and the automation of Internet of Things (IoT). I am strongly committed to designing end-to-end solutions, combining the robustness of highly capable backend logic and cutting-edge data processing to produce intuitive visual interfaces that have a real impact on user experience.
+Information Technology student at Telkom University focused on AI engineering, NLP, analytics, and software systems that work in real environments. I build Indonesian NLP models, data-driven workflows, and production-aware systems that connect machine learning with useful software products. My work spans model training, metric-driven validation, backend development, and product thinking — delivered through projects in toxic speech detection, healthcare records, IoT fermentation monitoring, and donation platforms. GEMASTIK XVIII Silver Medalist in ICT Business Development.
 
 ---
 
 ## TECHNICAL SKILLS
-- **Programming Languages:** JavaScript, PHP, Go, Python, C++, Java
-- **Frameworks & Libraries:** React.js, Vite, Node.js, Express.js, Laravel
-- **Databases & Cloud:** MySQL, Database Architecture, Firebase, Supabase
-- **Hardware & Emerging Tech:** Internet of Things (IoT), ESP32, Artificial Intelligence
+- **AI / NLP:** IndoBERTweet, Hugging Face Transformers, ONNX Runtime, Scikit-learn, threshold tuning, stratified evaluation
+- **Analytics:** Validation splits, metric reporting, decision-oriented analysis, data aggregation
+- **Programming Languages:** Python, JavaScript, PHP, Go, C++, Java
+- **Frameworks & Libraries:** React.js, Node.js, Express.js, Laravel, Tailwind CSS, Three.js
+- **Databases & Cloud:** MySQL, Firebase, Supabase, Database Architecture
+- **Hardware & IoT:** ESP32, Arduino, sensor integration (pH, MQ-135, Thermocouple)
+
+---
+
+## PROJECTS
+
+**Indonesia Toxic Speech Detector** | *AI Engineer / NLP* | 2026  
+[github.com/BayuSatrio2804/Indonesia-Toxic-Speech-Detector](https://github.com/BayuSatrio2804/Indonesia-Toxic-Speech-Detector)
+- Fine-tuned IndoBERTweet for binary Indonesian toxic speech classification.
+- Built a stratified train, validation, and test workflow with final test metrics reported once.
+- Tuned the toxic-class decision threshold on validation data before final evaluation.
+- Exported Hugging Face and FP32 ONNX Runtime CPU inference artifacts.
 
 ---
 
 ## EXPERIENCE
 
-**Back-End Web Developer** | *Bidanku (Digital Transformation Group)*  
-*Aug 2025 – Jan 2026*  
-- Led the design of rigorous relational database schemas (ANC, Family Planning, Immunizations).
-- Implemented automated medical business logic for future midwifery clinic medical record systems, including determining patient LMP and EDD.
-- Optimized SQL queries for data aggregation in Monthly Reports and created secure Audit Log systems.
+**Back-End Web Developer** | *Bidanku*  
+*Aug 2025 – Jan 2026*
+- Designed relational database schemas for ANC, family planning, deliveries, and immunization workflows.
+- Implemented medical business logic for patient LMP and EDD calculations.
+- Optimized SQL reporting queries and built audit logging for data modification tracking.
 
-**CFO & ICT Business Development** | *ACETRA (Smart IoT System)*  
-*Jun 2025 – Oct 2025*  
-- Engineered a smart IoT monitoring system to optimize coffee husk waste fermentation.
-- Managed strategic financial budgets for sensor hardware procurement (pH Sensors, MQ-135, Thermocouples).
-- Analyzed commercial feasibility and bridged technical IoT capabilities with business value (GEMASTIK XVIII 2025).
+**CFO & ICT Business Development** | *ACETRA Smart IoT System*  
+*Jun 2025 – Oct 2025*
+- Monitored pH, temperature, and gas parameters through ESP32 and Firebase integration for coffee husk fermentation.
+- Managed strategic financial planning and hardware procurement budgets.
+- Connected IoT capabilities with product and business feasibility for GEMASTIK XVIII 2025.
 
 **Fullstack Web Developer** | *DonasiKu Platform*  
-*2025*  
-- Engineered a robust donation platform utilizing a Laravel backend and a modern React frontend.
-- Built a Donation Tracking System for live distribution status updates to guarantee operational transparency.
-- Developed a responsive Landing Page to increase interaction and donor trust.
+*2025*
+- Built a responsive donation platform with a Laravel backend and React frontend.
+- Developed a donation tracking system for live distribution status and operational transparency.
+- Integrated real-time chat workflows between donors and recipients.
 
 ---
 
@@ -51,15 +64,15 @@ I believe that true innovation is born from the synergy of various technological
 
 **Telkom University**  
 *Bachelor of Information Technology* (Sep 2023 – Sep 2027)  
-- Focus: Software engineering pillars, modern computing systems, and innovative IT development.
+- Focus: Software engineering, modern computing systems, analytics, and applied information technology.
 
 **SMAN 3 Banjarmasin**  
-*High School Diploma, Exact Sciences (IPA)* (2020 – 2023)  
-- Built a strong foundation in logical thinking, analytics, and exact sciences.
+*High School Diploma, Science (IPA)* (2020 – 2023)  
+- Built a foundation in logical thinking, mathematics, and analytical problem solving.
 
 ---
 
 ## AWARDS & CERTIFICATIONS
 
-- **2nd Place (Silver Medal) - GEMASTIK XVIII (National Level) in ICT**  
+- **2nd Place (Silver Medal) – GEMASTIK XVIII National Level, ICT Business Development**  
   *Ministry of Higher Education, Science, and Technology RI* — Oct 2025

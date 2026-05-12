@@ -26,7 +26,7 @@ export const content = {
     },
     projects: { eyebrow: 'Selected Work', title: 'Projects that connect models, data, and software.', expand: 'View Details', collapse: 'Hide Details', repo: 'View Repository', visualDocumentation: 'Visual Documentation', contributions: 'Responsibilities & Contributions' },
     certificates: { eyebrow: 'Proof & Recognition', title: 'Certificates & Achievements', body: 'A focused record of competitions, certificates, and recognitions. More certificates can be added through the certificate data list later.', view: 'View Certificate' },
-    experience: { eyebrow: 'Experience', title: 'Applied technical journey' },
+    experience: { eyebrow: 'Experience', title: 'From NLP models to backend systems — applied work.' },
     education: { eyebrow: 'Education', title: 'Academic foundation', certificatesTitle: 'Recognition Highlight' },
     contact: {
       eyebrow: 'Contact', title: "Let's build useful AI and data systems.", body: 'Open to collaboration, internship opportunities, AI/data roles, and applied software projects.', github: 'GitHub', linkedin: 'LinkedIn',
@@ -58,7 +58,7 @@ export const content = {
     },
     projects: { eyebrow: 'Karya Pilihan', title: 'Proyek yang menghubungkan model, data, dan software.', expand: 'Lihat Detail', collapse: 'Sembunyikan Detail', repo: 'Lihat Repository', visualDocumentation: 'Dokumentasi Visual', contributions: 'Tanggung Jawab & Kontribusi' },
     certificates: { eyebrow: 'Bukti & Pengakuan', title: 'Sertifikat & Pencapaian', body: 'Catatan kompetisi, sertifikat, dan pencapaian. Sertifikat lain bisa ditambahkan nanti melalui data certificate.', view: 'Lihat Sertifikat' },
-    experience: { eyebrow: 'Pengalaman', title: 'Perjalanan teknis terapan' },
+    experience: { eyebrow: 'Pengalaman', title: 'Dari model NLP ke sistem backend — karya nyata.' },
     education: { eyebrow: 'Pendidikan', title: 'Fondasi akademik', certificatesTitle: 'Highlight Pencapaian' },
     contact: {
       eyebrow: 'Kontak', title: 'Mari bangun sistem AI dan data yang berguna.', body: 'Terbuka untuk kolaborasi, internship, peran AI/data, dan proyek software terapan.', github: 'GitHub', linkedin: 'LinkedIn',
@@ -79,9 +79,10 @@ export const certificates = [
 ];
 
 export const experiences = [
-  { role: 'Back-End Web Developer', company: 'Bidanku Digital Transformation Group', period: 'Aug 2025 - Jan 2026', desc: { en: 'Designed relational data structures and backend workflows for digital medical record operations.', id: 'Merancang struktur data relasional dan workflow backend untuk operasional rekam medis digital.' } },
-  { role: 'CFO & ICT Business Development', company: 'ACETRA Smart IoT System', period: 'Jun 2025 - Oct 2025', desc: { en: 'Connected IoT engineering, financial planning, and product feasibility for a fermentation monitoring system.', id: 'Menghubungkan engineering IoT, perencanaan finansial, dan kelayakan produk untuk sistem monitoring fermentasi.' } },
-  { role: 'Fullstack Web Developer', company: 'DonasiKu Platform', period: '2025', desc: { en: 'Built React and Laravel-based workflows for donation discovery, tracking, and communication.', id: 'Membangun workflow berbasis React dan Laravel untuk discovery, tracking, dan komunikasi donasi.' } },
+  { role: 'AI Engineer / NLP', company: 'Indonesia Toxic Speech Detector', period: '2026', desc: { en: 'Fine-tuned IndoBERTweet for binary Indonesian toxic speech classification. Built stratified train/val/test workflows, tuned decision thresholds on validation data, and exported FP32 ONNX Runtime CPU inference artifacts.', id: 'Melakukan fine-tuning IndoBERTweet untuk klasifikasi toxic speech bahasa Indonesia. Membangun workflow stratified train/val/test, tuning threshold pada data validasi, dan mengekspor artifact FP32 ONNX Runtime untuk CPU inference.' } },
+  { role: 'Back-End Web Developer', company: 'Bidanku', period: 'Aug 2025 - Jan 2026', desc: { en: 'Designed relational schemas for ANC, family planning, deliveries, and immunization workflows. Implemented medical business logic (LMP & EDD) and audit logging for data modification tracking.', id: 'Merancang skema relasional untuk ANC, KB, persalinan, dan imunisasi. Mengimplementasikan logika bisnis medis (LMP & EDD) dan audit log untuk pelacakan perubahan data.' } },
+  { role: 'CFO & ICT Business Development', company: 'ACETRA Smart IoT System', period: 'Jun 2025 - Oct 2025', desc: { en: 'Monitored pH, temperature, and gas via ESP32 and Firebase for coffee husk fermentation. Managed hardware procurement budgets and connected IoT capabilities with business feasibility for GEMASTIK XVIII.', id: 'Memonitor pH, temperatur, dan gas melalui ESP32 dan Firebase untuk fermentasi kulit kopi. Mengelola anggaran pengadaan hardware dan menghubungkan kapabilitas IoT dengan kelayakan bisnis untuk GEMASTIK XVIII.' } },
+  { role: 'Fullstack Web Developer', company: 'DonasiKu Platform', period: '2025', desc: { en: 'Built a donation platform with a Laravel backend and React frontend. Developed a donation tracking system and integrated real-time chat workflows between donors and recipients.', id: 'Membangun platform donasi dengan backend Laravel dan frontend React. Mengembangkan sistem donation tracking dan mengintegrasikan workflow live chat antara donor dan penerima.' } },
 ];
 
 export const education = [

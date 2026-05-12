@@ -68,6 +68,14 @@
     .company {
         font-style: italic;
         color: #555;
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+    .project-link {
+        font-size: 12px;
+        color: #0369a1;
+        display: block;
+        margin-bottom: 4px;
     }
     @media print {
         body { padding: 0; }
@@ -78,48 +86,62 @@
 <body>
 
 <h1>Muhammad Bayu Satrio</h1>
-<div class="subtitle">Fullstack Web Developer | AI Engineer | IoT Specialist</div>
+<div class="subtitle">AI Engineer / Data Analyst &nbsp;·&nbsp; NLP &nbsp;·&nbsp; Analytics &nbsp;·&nbsp; Applied Systems</div>
 <div class="contact">
-    Email: bayusatrio2804@gmail.com | 
-    LinkedIn: linkedin.com/in/muhammad-bayu-satrio | 
-    GitHub: github.com/BayuSatrio2804
+    Email: bayusatrio2804@gmail.com &nbsp;|&nbsp;
+    LinkedIn: <a href="https://www.linkedin.com/in/muhammad-bayu-satrio-52826a2a5/">linkedin.com/in/muhammad-bayu-satrio-52826a2a5</a> &nbsp;|&nbsp;
+    GitHub: <a href="https://github.com/BayuSatrio2804">github.com/BayuSatrio2804</a>
 </div>
 
 <h2>Professional Summary</h2>
-<p>I believe that true innovation is born from the synergy of various technological disciplines. As a practitioner, I focus on integrating smart digital ecosystems—leveraging the reliability of Fullstack architecture, the acuity of Artificial Intelligence, and the automation of Internet of Things (IoT). I am strongly committed to designing end-to-end solutions, combining the robustness of highly capable backend logic and cutting-edge data processing to produce intuitive visual interfaces that have a real impact on user experience.</p>
+<p>Information Technology student at Telkom University focused on AI engineering, NLP, analytics, and software systems that work in real environments. I build Indonesian NLP models, data-driven workflows, and production-aware systems that connect machine learning with useful software products. My work spans model training, metric-driven validation, backend development, and product thinking — delivered through projects in toxic speech detection, healthcare records, IoT fermentation monitoring, and donation platforms. GEMASTIK XVIII Silver Medalist in ICT Business Development.</p>
 
 <h2>Technical Skills</h2>
 <ul>
-    <li><strong>Programming Languages:</strong> PHP, JavaScript, Dart, Go, Python, C++, Java</li>
-    <li><strong>Frameworks & Libraries:</strong> Laravel, Flutter, React.js, Tailwind CSS, Three.js, Node.js, Express.js</li>
-    <li><strong>Databases & Cloud:</strong> MySQL, Database Architecture, Firebase, Supabase</li>
-    <li><strong>Hardware & Emerging Tech:</strong> IoT (ESP32, Arduino), Artificial Intelligence</li>
+    <li><strong>AI / NLP:</strong> IndoBERTweet, Hugging Face Transformers, ONNX Runtime, Scikit-learn, threshold tuning, stratified evaluation</li>
+    <li><strong>Analytics:</strong> Validation splits, metric reporting, decision-oriented analysis, data aggregation</li>
+    <li><strong>Programming Languages:</strong> Python, JavaScript, PHP, Go, C++, Java</li>
+    <li><strong>Frameworks &amp; Libraries:</strong> React.js, Node.js, Express.js, Laravel, Tailwind CSS, Three.js</li>
+    <li><strong>Databases &amp; Cloud:</strong> MySQL, Firebase, Supabase, Database Architecture</li>
+    <li><strong>Hardware &amp; IoT:</strong> ESP32, Arduino, sensor integration (pH, MQ-135, Thermocouple)</li>
 </ul>
 
-<h2>Professional Experience</h2>
+<h2>Projects</h2>
+
+<h3>Indonesia Toxic Speech Detector <span class="period">2026</span></h3>
+<div class="company">AI Engineer / NLP</div>
+<a class="project-link" href="https://github.com/BayuSatrio2804/Indonesia-Toxic-Speech-Detector">github.com/BayuSatrio2804/Indonesia-Toxic-Speech-Detector</a>
+<ul>
+    <li>Fine-tuned IndoBERTweet for binary Indonesian toxic speech classification.</li>
+    <li>Built a stratified train, validation, and test workflow with final test metrics reported once.</li>
+    <li>Tuned the toxic-class decision threshold on validation data before final evaluation.</li>
+    <li>Exported Hugging Face and FP32 ONNX Runtime CPU inference artifacts.</li>
+</ul>
+
+<h2>Experience</h2>
 
 <h3>Back-End Web Developer <span class="period">Aug 2025 – Jan 2026</span></h3>
-<div class="company">Bidanku (Digital Transformation Group)</div>
+<div class="company">Bidanku</div>
 <ul>
-    <li>Led the design of rigorous relational database schemas (ANC, Family Planning, Immunizations).</li>
-    <li>Implemented automated medical business logic for future midwifery clinic medical record systems, including determining patient LMP and EDD.</li>
-    <li>Optimized SQL queries for data aggregation in Monthly Reports and created secure Audit Log systems.</li>
+    <li>Designed relational database schemas for ANC, family planning, deliveries, and immunization workflows.</li>
+    <li>Implemented medical business logic for patient LMP and EDD calculations.</li>
+    <li>Optimized SQL reporting queries and built audit logging for data modification tracking.</li>
 </ul>
 
-<h3>CFO & ICT Business Development <span class="period">Jun 2025 – Oct 2025</span></h3>
+<h3>CFO &amp; ICT Business Development <span class="period">Jun 2025 – Oct 2025</span></h3>
 <div class="company">ACETRA (Smart IoT System)</div>
 <ul>
-    <li>Engineered a smart IoT monitoring system to optimize coffee husk waste fermentation.</li>
-    <li>Managed strategic financial budgets for sensor hardware procurement (pH Sensors, MQ-135, Thermocouples).</li>
-    <li>Analyzed commercial feasibility and bridged technical IoT capabilities with business value (GEMASTIK XVIII 2025).</li>
+    <li>Monitored pH, temperature, and gas parameters through ESP32 and Firebase integration for coffee husk fermentation.</li>
+    <li>Managed strategic financial planning and hardware procurement budgets.</li>
+    <li>Connected IoT capabilities with product and business feasibility for GEMASTIK XVIII 2025.</li>
 </ul>
 
 <h3>Fullstack Web Developer <span class="period">2025</span></h3>
 <div class="company">DonasiKu Platform</div>
 <ul>
-    <li>Engineered a robust donation platform utilizing a Laravel backend and a modern React frontend.</li>
-    <li>Built a Donation Tracking System for live distribution status updates to guarantee operational transparency.</li>
-    <li>Developed a responsive Landing Page to increase interaction and donor trust.</li>
+    <li>Built a responsive donation platform with a Laravel backend and React frontend.</li>
+    <li>Developed a donation tracking system for live distribution status and operational transparency.</li>
+    <li>Integrated real-time chat workflows between donors and recipients.</li>
 </ul>
 
 <h2>Education</h2>
@@ -127,18 +149,18 @@
 <h3>Telkom University <span class="period">Sep 2023 – Sep 2027</span></h3>
 <div class="company">Bachelor of Information Technology</div>
 <ul>
-    <li>Focus: Software engineering pillars, modern computing systems, and innovative IT development.</li>
+    <li>Focus: Software engineering, modern computing systems, analytics, and applied information technology.</li>
 </ul>
 
 <h3>SMAN 3 Banjarmasin <span class="period">2020 – 2023</span></h3>
-<div class="company">High School Diploma, Exact Sciences (IPA)</div>
+<div class="company">High School Diploma, Science (IPA)</div>
 <ul>
-    <li>Built a strong foundation in logical thinking, analytics, and exact sciences.</li>
+    <li>Built a foundation in logical thinking, mathematics, and analytical problem solving.</li>
 </ul>
 
-<h2>Awards & Certifications</h2>
+<h2>Awards &amp; Certifications</h2>
 <ul>
-    <li><strong>2nd Place (Silver Medal) - GEMASTIK XVIII (National Level) in ICT</strong> – <i>Ministry of Higher Education, Science, and Technology RI (Oct 2025)</i></li>
+    <li><strong>2nd Place (Silver Medal) – GEMASTIK XVIII National Level, ICT Business Development</strong> – <i>Ministry of Higher Education, Science, and Technology RI (Oct 2025)</i></li>
 </ul>
 
 </body>
