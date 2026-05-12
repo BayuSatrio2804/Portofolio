@@ -27,33 +27,26 @@ Information Technology student at Telkom University focused on AI engineering, N
 
 ---
 
-## PROJECTS
+## EXPERIENCE & PROJECTS
 
-**Indonesia Toxic Speech Detector** | *AI Engineer / NLP* | 2026  
+**AI Engineer / NLP** | *Indonesia Toxic Speech Detector* | 2026  
 [github.com/BayuSatrio2804/Indonesia-Toxic-Speech-Detector](https://github.com/BayuSatrio2804/Indonesia-Toxic-Speech-Detector)
 - Fine-tuned IndoBERTweet for binary Indonesian toxic speech classification.
 - Built a stratified train, validation, and test workflow with final test metrics reported once.
 - Tuned the toxic-class decision threshold on validation data before final evaluation.
 - Exported Hugging Face and FP32 ONNX Runtime CPU inference artifacts.
 
----
-
-## EXPERIENCE
-
-**Back-End Web Developer** | *Bidanku*  
-*Aug 2025 – Jan 2026*
+**Back-End Web Developer** | *Bidanku* | Aug 2025 – Jan 2026
 - Designed relational database schemas for ANC, family planning, deliveries, and immunization workflows.
 - Implemented medical business logic for patient LMP and EDD calculations.
 - Optimized SQL reporting queries and built audit logging for data modification tracking.
 
-**CFO & ICT Business Development** | *ACETRA Smart IoT System*  
-*Jun 2025 – Oct 2025*
-- Monitored pH, temperature, and gas parameters through ESP32 and Firebase integration for coffee husk fermentation.
+**CFO & ICT Business Development** | *ACETRA Smart IoT System* | Jun 2025 – Oct 2025
+- Monitored pH, temperature, and gas parameters through ESP32 and Firebase for coffee husk fermentation.
 - Managed strategic financial planning and hardware procurement budgets.
 - Connected IoT capabilities with product and business feasibility for GEMASTIK XVIII 2025.
 
-**Fullstack Web Developer** | *DonasiKu Platform*  
-*2025*
+**Fullstack Web Developer** | *DonasiKu Platform* | 2025
 - Built a responsive donation platform with a Laravel backend and React frontend.
 - Developed a donation tracking system for live distribution status and operational transparency.
 - Integrated real-time chat workflows between donors and recipients.

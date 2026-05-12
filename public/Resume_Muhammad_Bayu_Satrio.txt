@@ -1,0 +1,87 @@
+================================================================================
+MUHAMMAD BAYU SATRIO
+AI Engineer / Data Analyst | NLP . Analytics . Applied Systems
+================================================================================
+
+Email    : bayusatrio2804@gmail.com
+LinkedIn : linkedin.com/in/muhammad-bayu-satrio-52826a2a5
+GitHub   : github.com/BayuSatrio2804
+
+--------------------------------------------------------------------------------
+PROFESSIONAL SUMMARY
+--------------------------------------------------------------------------------
+Information Technology student at Telkom University focused on AI engineering,
+NLP, analytics, and software systems that work in real environments. I build
+Indonesian NLP models, data-driven workflows, and production-aware systems that
+connect machine learning with useful software products. My work spans model
+training, metric-driven validation, backend development, and product thinking --
+delivered through projects in toxic speech detection, healthcare records, IoT
+fermentation monitoring, and donation platforms.
+GEMASTIK XVIII Silver Medalist in ICT Business Development.
+
+--------------------------------------------------------------------------------
+TECHNICAL SKILLS
+--------------------------------------------------------------------------------
+AI / NLP        : IndoBERTweet, Hugging Face Transformers, ONNX Runtime,
+                  Scikit-learn, threshold tuning, stratified evaluation
+Analytics       : Validation splits, metric reporting, decision-oriented
+                  analysis, data aggregation
+Languages       : Python, JavaScript, PHP, Go, C++, Java
+Frameworks      : React.js, Node.js, Express.js, Laravel, Tailwind CSS, Three.js
+Databases/Cloud : MySQL, Firebase, Supabase, Database Architecture
+Hardware / IoT  : ESP32, Arduino, sensor integration (pH, MQ-135, Thermocouple)
+
+--------------------------------------------------------------------------------
+EXPERIENCE & PROJECTS
+--------------------------------------------------------------------------------
+Indonesia Toxic Speech Detector | AI Engineer / NLP | 2026
+github.com/BayuSatrio2804/Indonesia-Toxic-Speech-Detector
+  - Fine-tuned IndoBERTweet for binary Indonesian toxic speech classification.
+  - Built a stratified train, validation, and test workflow with final test
+    metrics reported once.
+  - Tuned the toxic-class decision threshold on validation data before final
+    evaluation.
+  - Exported Hugging Face and FP32 ONNX Runtime CPU inference artifacts.
+
+Back-End Web Developer | Bidanku | Aug 2025 - Jan 2026
+  - Designed relational database schemas for ANC, family planning, deliveries,
+    and immunization workflows.
+  - Implemented medical business logic for patient LMP and EDD calculations.
+  - Optimized SQL reporting queries and built audit logging for data modification
+    tracking.
+
+CFO & ICT Business Development | ACETRA Smart IoT System | Jun 2025 - Oct 2025
+  - Monitored pH, temperature, and gas parameters through ESP32 and Firebase
+    for coffee husk fermentation.
+  - Managed strategic financial planning and hardware procurement budgets.
+  - Connected IoT capabilities with product and business feasibility for
+    GEMASTIK XVIII 2025.
+
+Fullstack Web Developer | DonasiKu Platform | 2025
+  - Built a responsive donation platform with a Laravel backend and React
+    frontend.
+  - Developed a donation tracking system for live distribution status and
+    operational transparency.
+  - Integrated real-time chat workflows between donors and recipients.
+
+--------------------------------------------------------------------------------
+EDUCATION
+--------------------------------------------------------------------------------
+Telkom University
+Bachelor of Information Technology | Sep 2023 - Sep 2027
+  - Focus: Software engineering, modern computing systems, analytics, and
+    applied information technology.
+
+SMAN 3 Banjarmasin
+High School Diploma, Science (IPA) | 2020 - 2023
+  - Built a foundation in logical thinking, mathematics, and analytical problem
+    solving.
+
+--------------------------------------------------------------------------------
+AWARDS & CERTIFICATIONS
+--------------------------------------------------------------------------------
+  - 2nd Place (Silver Medal) - GEMASTIK XVIII National Level,
+    ICT Business Development
+    Ministry of Higher Education, Science, and Technology RI -- Oct 2025
+
+================================================================================
