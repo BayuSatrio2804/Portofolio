@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 const NAV_ITEMS = [
   { id: 'hero', labelKey: 'home' },
@@ -9,6 +10,8 @@ const NAV_ITEMS = [
   { id: 'education', labelKey: 'education' },
   { id: 'contact', labelKey: 'contact' },
 ]
+
+const EASE = [0.76, 0, 0.24, 1]
 
 export default function Sidebar({ copy, language, onLanguageChange }) {
   const [active, setActive] = useState('hero')
@@ -38,24 +41,37 @@ export default function Sidebar({ copy, language, onLanguageChange }) {
   return (
     <>
       <aside className="sidebar">
-        <div className="sidebar-logo">
+        <motion.div
+          className="sidebar-logo"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: EASE }}
+        >
           Bayu<span className="sidebar-logo-dot">.</span>
-        </div>
+        </motion.div>
 
         <nav className="sidebar-nav" aria-label="Main navigation">
-          {NAV_ITEMS.map(item => (
-            <button
+          {NAV_ITEMS.map((item, i) => (
+            <motion.button
               key={item.id}
               type="button"
               className={`sidebar-nav-item${active === item.id ? ' active' : ''}`}
               onClick={() => scrollTo(item.id)}
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.07, ease: EASE }}
             >
               {copy[item.labelKey]}
-            </button>
+            </motion.button>
           ))}
         </nav>
 
-        <div className="sidebar-footer">
+        <motion.div
+          className="sidebar-footer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.9 }}
+        >
           <div className="lang-toggle">
             <button
               type="button"
@@ -70,7 +86,7 @@ export default function Sidebar({ copy, language, onLanguageChange }) {
             >ID</button>
           </div>
           <p className="sidebar-copyright">© 2026 Muhammad Bayu Satrio</p>
-        </div>
+        </motion.div>
       </aside>
 
       <nav className="mobile-nav" aria-label="Mobile navigation">
