@@ -7,6 +7,8 @@
   --accent: #CD7F32;
   --accent-dim: rgba(205, 127, 50, 0.12);
   --accent-glow: rgba(205, 127, 50, 0.22);
+  --accent-glow-strong: rgba(205, 127, 50, 0.4);
+  --accent-subtle: rgba(205, 127, 50, 0.06);
   --text: #F5F5F5;
   --text-muted: rgba(245, 245, 245, 0.55);
   --text-soft: rgba(245, 245, 245, 0.75);
@@ -32,7 +34,7 @@ html {
 
 body {
   background:
-    radial-gradient(circle at 80% 10%, rgba(205, 127, 50, 0.06), transparent 40rem),
+    radial-gradient(circle at 80% 10%, var(--accent-subtle), transparent 40rem),
     var(--bg);
   color: var(--text);
   font-family: 'Space Grotesk', system-ui, sans-serif;
@@ -121,7 +123,7 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 0 20px var(--accent-glow);
 }
 .btn-primary:hover {
-  box-shadow: 0 0 32px rgba(205, 127, 50, 0.4);
+  box-shadow: 0 0 32px var(--accent-glow-strong);
 }
 .btn-secondary {
   background: transparent;
