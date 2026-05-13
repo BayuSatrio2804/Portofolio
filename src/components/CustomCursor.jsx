@@ -1,99 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
-
-const MotionDiv = motion.div;
+import { useEffect, useRef } from 'react'
 
 export default function CustomCursor() {
-    const [isHovered, setIsHovered] = useState(false);
-    const cursorX = useMotionValue(-100);
-    const cursorY = useMotionValue(-100);
+  const dotRef = useRef(null)
+  const ringRef = useRef(null)
 
-    const springConfig = { damping: 25, stiffness: 200 };
-    const cursorXSpring = useSpring(cursorX, springConfig);
-    const cursorYSpring = useSpring(cursorY, springConfig);
+  useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return
 
-    useEffect(() => {
-        const moveCursor = (e) => {
-            cursorX.set(e.clientX - 10);
-            cursorY.set(e.clientY - 10);
-        };
+    const dot = dotRef.current
+    const ring = ringRef.current
+    if (!dot || !ring) return
 
-        const handleMouseOver = (e) => {
-            // Perbesar kursor jika menyentuh tombol, link, atau gambar
-            if (
-                e.target.tagName === 'A' ||
-                e.target.tagName === 'BUTTON' ||
-                e.target.tagName === 'IMG' ||
-                e.target.closest('a') ||
-                e.target.closest('button')
-            ) {
-                setIsHovered(true);
-            } else {
-                setIsHovered(false);
-            }
-        };
+    const onMove = e => {
+      dot.style.left = `${e.clientX}px`
+      dot.style.top = `${e.clientY}px`
+      ring.style.left = `${e.clientX}px`
+      ring.style.top = `${e.clientY}px`
+    }
 
-        window.addEventListener('mousemove', moveCursor);
-        window.addEventListener('mouseover', handleMouseOver);
+    const onEnter = () => ring.classList.add('expanded')
+    const onLeave = () => ring.classList.remove('expanded')
 
-        return () => {
-            window.removeEventListener('mousemove', moveCursor);
-            window.removeEventListener('mouseover', handleMouseOver);
-        };
-    }, [cursorX, cursorY]);
+    window.addEventListener('mousemove', onMove)
 
-    return (
-        <>
-            <style>
-                {`
-          * {
-            cursor: none !important;
-          }
-        `}
-            </style>
+    const els = document.querySelectorAll('a, button, [role="button"]')
+    els.forEach(el => {
+      el.addEventListener('mouseenter', onEnter)
+      el.addEventListener('mouseleave', onLeave)
+    })
 
-            {/* Cincin luar (melayang lebih lambat) */}
-            <MotionDiv
-                style={{
-                    position: 'fixed',
-                    left: 0,
-                    top: 0,
-                    width: 20,
-                    height: 20,
-                    borderRadius: '50%',
-                    border: '1px solid #38bdf8',
-                    pointerEvents: 'none',
-                    zIndex: 99999,
-                    translateX: cursorXSpring,
-                    translateY: cursorYSpring,
-                }}
-                animate={{
-                    scale: isHovered ? 2.5 : 1,
-                    backgroundColor: isHovered ? 'rgba(56, 189, 248, 0.2)' : 'transparent',
-                    borderWidth: isHovered ? '0px' : '1px'
-                }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            />
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      els.forEach(el => {
+        el.removeEventListener('mouseenter', onEnter)
+        el.removeEventListener('mouseleave', onLeave)
+      })
+    }
+  }, [])
 
-            {/* Titik dalam (mengikuti lebih cepat) */}
-            <MotionDiv
-                style={{
-                    position: 'fixed',
-                    left: 6,
-                    top: 6,
-                    width: 8,
-                    height: 8,
-                    borderRadius: '50%',
-                    backgroundColor: '#38bdf8',
-                    pointerEvents: 'none',
-                    zIndex: 99999,
-                    translateX: useSpring(cursorX, { damping: 40, stiffness: 400 }),
-                    translateY: useSpring(cursorY, { damping: 40, stiffness: 400 }),
-                }}
-                animate={{
-                    opacity: isHovered ? 0 : 1
-                }}
-            />
-        </>
-    );
+  return (
+    <>
+      <div className="cursor-dot" ref={dotRef} />
+      <div className="cursor-ring" ref={ringRef} />
+    </>
+  )
 }
