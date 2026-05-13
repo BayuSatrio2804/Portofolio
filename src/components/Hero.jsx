@@ -49,8 +49,7 @@ export default function Hero({ copy }) {
 
   return (
     <section id="hero" className="hero-section">
-      <div className="hero-inner">
-
+      <div className="hero-left">
         <motion.span
           className="eyebrow"
           initial={{ opacity: 0, x: -32 }}
@@ -86,22 +85,6 @@ export default function Hero({ copy }) {
           {copy.body}
         </motion.p>
 
-        <div className="hero-skills-grid">
-          {SKILL_CARDS.map((card, i) => (
-            <motion.div
-              key={card.label}
-              className="hero-skill-card"
-              initial={{ opacity: 0, y: 30, scale: 0.88 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.55, delay: 1.5 + i * 0.1, ease: EASE }}
-            >
-              <span className="hero-skill-icon">{card.icon}</span>
-              <span className="hero-skill-label">{card.label}</span>
-              <span className="hero-skill-sub">{card.sub}</span>
-            </motion.div>
-          ))}
-        </div>
-
         <motion.div
           className="hero-actions"
           initial={{ opacity: 0, y: 16 }}
@@ -117,8 +100,35 @@ export default function Hero({ copy }) {
             {copy.secondaryCta}
           </a>
         </motion.div>
-
       </div>
+
+      <motion.div
+        className="hero-visual"
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
+      >
+        <div className="hero-photo-ring">
+          <img src="/foto-saya.jpg" alt="Muhammad Bayu Satrio" className="hero-photo" />
+          <div className="hero-gemastik-badge">🥈 GEMASTIK XVIII · Silver</div>
+        </div>
+
+        <div className="hero-skills-grid">
+          {SKILL_CARDS.map((card, i) => (
+            <motion.div
+              key={card.label}
+              className="hero-skill-card"
+              initial={{ opacity: 0, y: 30, scale: 0.88 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.55, delay: 1.5 + i * 0.1, ease: EASE }}
+            >
+              <span className="hero-skill-icon">{card.icon}</span>
+              <span className="hero-skill-label">{card.label}</span>
+              <span className="hero-skill-sub">{card.sub}</span>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   )
 }

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import Background3D from './components/Background3D'
-import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar'
 import CustomCursor from './components/CustomCursor'
 import Preloader from './components/Preloader'
 import Hero from './components/Hero'
@@ -29,19 +29,17 @@ function App() {
       <Preloader />
       <CustomCursor />
       <Background3D />
-      <div className="app-shell">
-        <Sidebar copy={copy.nav} language={language} onLanguageChange={setLanguage} />
-        <main className="content-area">
-          <Hero copy={copy.hero} />
-          <BentoSection copy={copy.about} />
-          <Projects copy={copy.projects} language={language} projects={projects} />
-          <Certificates copy={copy.certificates} certificates={certificates} />
-          <Experience copy={copy.experience} language={language} experiences={experiences} />
-          <Education copy={copy.education} language={language} education={education} />
-          <Terminal language={language} />
-          <Contact copy={copy.contact} />
-        </main>
-      </div>
+      <Navbar copy={copy.nav} language={language} onLanguageChange={setLanguage} />
+      <main className="content-area">
+        <Hero copy={copy.hero} />
+        <BentoSection copy={copy.about} />
+        <Projects copy={copy.projects} language={language} projects={projects} />
+        <Certificates copy={copy.certificates} certificates={certificates} />
+        <Experience copy={copy.experience} language={language} experiences={experiences} />
+        <Education copy={copy.education} language={language} education={education} />
+        <Terminal language={language} />
+        <Contact copy={copy.contact} />
+      </main>
     </>
   )
 }
