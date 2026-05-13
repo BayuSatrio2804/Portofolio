@@ -1,49 +1,54 @@
-import { Award, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-const MotionArticle = motion.article
-
-function Certificates({ copy, certificates }) {
+export default function Certificates({ copy, certificates }) {
   return (
-    <section id="certificates" className="section certificates-section">
-      <div className="section-heading">
-        <span className="eyebrow">{copy.eyebrow}</span>
-        <h2>{copy.title}</h2>
-        <p>{copy.body}</p>
-      </div>
-      <div className="certificate-grid">
-        {certificates.map((certificate) => (
-          <MotionArticle
-            key={`${certificate.title}-${certificate.issuer}-${certificate.year}`}
+    <motion.section
+      id="certificates"
+      className="certificates-section"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
+      <span className="eyebrow">{copy.eyebrow}</span>
+      <h2 className="section-title">{copy.title}</h2>
+      <p className="section-body">{copy.body}</p>
+
+      <div className="certificates-list">
+        {certificates.map(cert => (
+          <motion.article
+            key={cert.title}
             className="certificate-card"
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            {certificate.image && (
-              <img src={certificate.image} alt={`${certificate.title} certificate`} />
-            )}
-            <div>
-              <div className="card-kicker">
-                <Award size={16} />
-                <span>{certificate.category}</span>
+            {cert.image && (
+              <div className="certificate-image-wrap">
+                <img src={cert.image} alt={cert.title} className="certificate-image" />
+                <div className="certificate-badge">🥈 2nd Place · National</div>
               </div>
-              <h3>{certificate.title}</h3>
-              <p>{certificate.issuer}</p>
-              <span className="certificate-year">{certificate.year}</span>
-              {certificate.image && (
-                <a href={certificate.image} target="_blank" rel="noreferrer" className="text-link">
+            )}
+            <div className="certificate-info">
+              <span className="certificate-category">{cert.category}</span>
+              <h3 className="certificate-title">{cert.title}</h3>
+              <p className="certificate-issuer">{cert.issuer}</p>
+              <p className="certificate-year">{cert.year}</p>
+              {cert.image && (
+                <a
+                  href={cert.image}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-secondary certificate-view-btn"
+                >
                   {copy.view}
-                  <ExternalLink size={15} />
                 </a>
               )}
             </div>
-          </MotionArticle>
+          </motion.article>
         ))}
       </div>
-    </section>
+    </motion.section>
   )
 }
-
-export default Certificates
