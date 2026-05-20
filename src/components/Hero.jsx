@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
 const SKILL_CARDS = [
@@ -9,6 +9,7 @@ const SKILL_CARDS = [
 ]
 
 const EASE = [0.76, 0, 0.24, 1]
+const isTouch = 'ontouchstart' in window
 
 function useTypewriter(text, speed = 55, delay = 1400) {
   const [displayed, setDisplayed] = useState('')
@@ -44,8 +45,57 @@ function WordReveal({ children, delay = 0, className = '' }) {
   )
 }
 
+function useTiltRef(maxDeg = 8) {
+  const ref = useRef(null)
+  useEffect(() => {
+    if (isTouch || !ref.current) return
+    const el = ref.current
+    const onMove = e => {
+      const r = el.getBoundingClientRect()
+      const x = (e.clientX - r.left) / r.width - 0.5
+      const y = (e.clientY - r.top) / r.height - 0.5
+      el.style.transform = `perspective(600px) rotateY(${x * maxDeg * 2}deg) rotateX(${-y * maxDeg * 2}deg)`
+    }
+    const onLeave = () => { el.style.transform = '' }
+    el.addEventListener('mousemove', onMove)
+    el.addEventListener('mouseleave', onLeave)
+    return () => {
+      el.removeEventListener('mousemove', onMove)
+      el.removeEventListener('mouseleave', onLeave)
+    }
+  }, [maxDeg])
+  return ref
+}
+
+function MagneticCard({ children, className, style, ...props }) {
+  const ref = useRef(null)
+  useEffect(() => {
+    if (isTouch || !ref.current) return
+    const el = ref.current
+    const onMove = e => {
+      const r = el.getBoundingClientRect()
+      const dx = (e.clientX - r.left - r.width / 2) * 0.25
+      const dy = (e.clientY - r.top - r.height / 2) * 0.25
+      el.style.transform = `translate(${dx}px, ${dy}px)`
+    }
+    const onLeave = () => { el.style.transform = '' }
+    el.addEventListener('mousemove', onMove)
+    el.addEventListener('mouseleave', onLeave)
+    return () => {
+      el.removeEventListener('mousemove', onMove)
+      el.removeEventListener('mouseleave', onLeave)
+    }
+  }, [])
+  return (
+    <div ref={ref} className={className} style={style} {...props}>
+      {children}
+    </div>
+  )
+}
+
 export default function Hero({ copy }) {
   const role = useTypewriter(copy.chipTitle, 55, 1500)
+  const photoRef = useTiltRef(8)
 
   return (
     <section id="hero" className="hero-section">
@@ -65,7 +115,7 @@ export default function Hero({ copy }) {
           </span>
           <span className="hero-name-line">
             <WordReveal delay={0.38}>Bayu </WordReveal>
-            <WordReveal delay={0.52} className="hero-name-accent">Satrio</WordReveal>
+            <WordReveal delay={0.52} className="hero-name-accent text-gradient">Satrio</WordReveal>
           </span>
         </h1>
 
@@ -108,7 +158,11 @@ export default function Hero({ copy }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
       >
-        <div className="hero-photo-ring">
+        <div
+          className="hero-photo-ring"
+          ref={photoRef}
+          style={{ transition: 'transform 150ms ease' }}
+        >
           <img src="/foto-saya.jpg" alt="Muhammad Bayu Satrio" className="hero-photo" />
           <div className="hero-gemastik-badge">🥈 GEMASTIK XVIII · Silver</div>
         </div>
@@ -117,14 +171,18 @@ export default function Hero({ copy }) {
           {SKILL_CARDS.map((card, i) => (
             <motion.div
               key={card.label}
-              className="hero-skill-card"
               initial={{ opacity: 0, y: 30, scale: 0.88 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.55, delay: 1.5 + i * 0.1, ease: EASE }}
             >
-              <span className="hero-skill-icon">{card.icon}</span>
-              <span className="hero-skill-label">{card.label}</span>
-              <span className="hero-skill-sub">{card.sub}</span>
+              <MagneticCard
+                className="hero-skill-card"
+                style={{ transition: 'transform 200ms ease, border-color 150ms ease, box-shadow 150ms ease' }}
+              >
+                <span className="hero-skill-icon">{card.icon}</span>
+                <span className="hero-skill-label">{card.label}</span>
+                <span className="hero-skill-sub">{card.sub}</span>
+              </MagneticCard>
             </motion.div>
           ))}
         </div>
