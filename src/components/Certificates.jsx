@@ -1,8 +1,11 @@
+import { useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const EASE = [0.76, 0, 0.24, 1]
 
 export default function Certificates({ copy, certificates }) {
+  const eyebrowRef = useRef(null)
+
   return (
     <motion.section
       id="certificates"
@@ -13,21 +16,23 @@ export default function Certificates({ copy, certificates }) {
       transition={{ duration: 0.4 }}
     >
       <motion.span
+        ref={eyebrowRef}
         className="eyebrow"
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: EASE }}
+        onViewportEnter={() => eyebrowRef.current?.classList.add('shimmer-active')}
       >
         {copy.eyebrow}
       </motion.span>
       <div className="section-title-wrap">
         <motion.h2
           className="section-title"
-          initial={{ y: '100%' }}
-          whileInView={{ y: 0 }}
+          initial={{ clipPath: 'inset(0 100% 0 0)' }}
+          whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
           viewport={{ once: true }}
-          transition={{ duration: 0.75, ease: EASE }}
+          transition={{ duration: 0.85, ease: EASE }}
         >
           {copy.title}
         </motion.h2>

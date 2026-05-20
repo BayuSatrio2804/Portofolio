@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
 const EMAIL_TARGET = 'bayusatrio0235@gmail.com'
@@ -7,6 +7,7 @@ const EASE = [0.76, 0, 0.24, 1]
 export default function Contact({ copy }) {
   const [isSent, setIsSent] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const eyebrowRef = useRef(null)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -36,11 +37,13 @@ export default function Contact({ copy }) {
       transition={{ duration: 0.4 }}
     >
       <motion.span
+        ref={eyebrowRef}
         className="eyebrow"
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: EASE }}
+        onViewportEnter={() => eyebrowRef.current?.classList.add('shimmer-active')}
       >
         {copy.eyebrow}
       </motion.span>
@@ -50,10 +53,10 @@ export default function Contact({ copy }) {
           <div className="section-title-wrap">
             <motion.h2
               className="contact-title"
-              initial={{ y: '100%' }}
-              whileInView={{ y: 0 }}
+              initial={{ clipPath: 'inset(0 100% 0 0)' }}
+              whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
               viewport={{ once: true }}
-              transition={{ duration: 0.75, ease: EASE }}
+              transition={{ duration: 0.85, ease: EASE }}
             >
               {copy.title}
             </motion.h2>
