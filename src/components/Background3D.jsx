@@ -2,6 +2,8 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Stars } from '@react-three/drei'
 import { useEffect, useRef, useState } from 'react'
 
+const isMobile = window.matchMedia('(max-width: 768px)').matches
+
 function RotatingKnot() {
   const meshRef = useRef()
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -48,12 +50,13 @@ export default function Background3D() {
       pointerEvents: 'none',
       opacity: 0.4,
     }}>
+      <div className="aurora" />
       <Canvas camera={{ position: [0, 0, 30] }}>
         <RotatingKnot />
         <Stars
           radius={100}
           depth={50}
-          count={800}
+          count={isMobile ? 400 : 800}
           factor={3}
           saturation={0}
           fade
