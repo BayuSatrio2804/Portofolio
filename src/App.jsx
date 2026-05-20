@@ -11,7 +11,8 @@ import Experience from './components/Experience'
 import Education from './components/Education'
 import Terminal from './components/Terminal'
 import Contact from './components/Contact'
-import { certificates, education, experiences, getCopy, projects } from './data/portfolioContent'
+import { certificates, education, experiences, getCopy, projects, stats, techStack } from './data/portfolioContent'
+import StatsCounter from './components/StatsCounter'
 
 function App() {
   const [language, setLanguage] = useState(() =>
@@ -32,6 +33,7 @@ function App() {
       <Navbar copy={copy.nav} language={language} onLanguageChange={setLanguage} />
       <main className="content-area">
         <Hero copy={copy.hero} />
+        <StatsCounter stats={stats} language={language} />
         <BentoSection copy={copy.about} />
         <Projects copy={copy.projects} language={language} projects={projects} />
         <Certificates copy={copy.certificates} certificates={certificates} />
