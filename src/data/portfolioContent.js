@@ -93,3 +93,29 @@ export const education = [
 export function getCopy(language) {
   return content[language] ?? content.en;
 }
+
+export const stats = [
+  { value: 4, suffix: '', label: { en: 'Projects', id: 'Proyek' } },
+  { value: 4, suffix: '', label: { en: 'Work Roles', id: 'Peran Kerja' } },
+  { value: 1, suffix: '', label: { en: 'National Award', id: 'Penghargaan' } },
+  { value: 3, suffix: '+', label: { en: 'Years Building', id: 'Tahun Berkarya' } },
+]
+
+export const techStack = [
+  {
+    group: { en: 'ML / AI', id: 'ML / AI' },
+    items: ['Python', 'PyTorch', 'Scikit-learn', 'ONNX Runtime', 'IndoBERTweet', 'Hugging Face'],
+  },
+  {
+    group: { en: 'Frontend', id: 'Frontend' },
+    items: ['React', 'Vite', 'Framer Motion', 'Tailwind CSS'],
+  },
+  {
+    group: { en: 'Backend', id: 'Backend' },
+    items: ['FastAPI', 'Node.js', 'Express', 'Laravel'],
+  },
+  {
+    group: { en: 'Tools', id: 'Tools' },
+    items: ['Docker', 'Git', 'MySQL', 'Jupyter', 'VS Code'],
+  },
+]
