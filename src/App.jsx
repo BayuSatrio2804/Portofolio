@@ -34,7 +34,7 @@ function App() {
       <main className="content-area">
         <Hero copy={copy.hero} />
         <StatsCounter stats={stats} language={language} />
-        <BentoSection copy={copy.about} />
+        <BentoSection copy={copy.about} techStack={techStack} language={language} />
         <Projects copy={copy.projects} language={language} projects={projects} />
         <Certificates copy={copy.certificates} certificates={certificates} />
         <Experience copy={copy.experience} language={language} experiences={experiences} />

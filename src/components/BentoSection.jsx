@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
+import TechStackGrid from './TechStack'
 
 const EASE = [0.76, 0, 0.24, 1]
 
@@ -68,6 +69,10 @@ export default function BentoSection({ copy, techStack, language }) {
           </motion.div>
         ))}
       </div>
+
+      {techStack && (
+        <TechStackGrid techStack={techStack} language={language} />
+      )}
     </motion.section>
   )
 }
